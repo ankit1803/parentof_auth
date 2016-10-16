@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+        <settings>
+                <setting name="cacheEnabled" value="true" />
+                <setting name="lazyLoadingEnabled" value="true" />
+                <setting name="multipleResultSetsEnabled" value="true" />
+                <setting name="useColumnLabel" value="true" />
+                <setting name="useGeneratedKeys" value="false" />
+                <setting name="defaultExecutorType" value="SIMPLE" />
+                <setting name="defaultStatementTimeout" value="25000" />
+                <!--<setting name="logImpl" value="LOG4J" />-->
+        </settings>
+		<typeAliases>
+            <typeAlias type='com.parentoff.rest.application.model.Application' alias='Application'></typeAlias>
+            <typeAlias type='com.parentoff.rest.application.model.AppRoleUser' alias='AppRoleUser'></typeAlias>
+            <typeAlias type='com.parentoff.rest.permission.model.Permission' alias='Permission'></typeAlias>
+            <typeAlias type='com.parentoff.rest.permission.model.PermissionGroup' alias='PermissionGroup'></typeAlias>
+            <typeAlias type='com.parentoff.rest.permission.model.PermissionGroupMap' alias='PermissionGroupMap'></typeAlias>
+            <typeAlias type='com.parentoff.rest.user.model.User' alias='User'></typeAlias>
+            <typeAlias type='com.parentoff.rest.user.model.Group' alias='Group'></typeAlias>
+			<typeAlias type='com.parentoff.rest.user.model.UserGroup' alias='UserGroup'></typeAlias>
+		</typeAliases>
+
+        <environments default="production">
+                <environment id="production">
+                        <transactionManager type="JDBC" />
+                        <dataSource type="POOLED">
+                                <property name="driver" value="com.mysql.jdbc.Driver" />
+                                <property name="url" value="jdbc:mysql://localhost:3306/app_access" />
+                                <property name="username" value="parentof" />
+                                <property name="password" value="ParentOf#12" />
+                                <property name="poolMaximumActiveConnections" value="150" />
+                                <property name="poolMaximumIdleConnections" value="30" />
+                                <property name="poolPingEnabled" value="true" />
+                                <property name="poolMaximumCheckoutTime" value="20000" />
+				 <property name="poolPingEnabled" value="true" />
+				  <property name="poolMaximumCheckoutTime" value="20000" />
+				   <property name="poolPingQuery" value="select 1 as ISPINGWORKING from dual"/>
+				    <property name="poolPingConnectionsNotUsedFor" value="3600000"/>
+				     <property name="poolTimeToWait" value="10000"/>
+                        </dataSource>
+                </environment>
+        </environments>
+        <mappers>
+                <mapper url="file:///home/ec2-user/auth-config/sqlQueries.xml" />
+        </mappers>
+</configuration>
